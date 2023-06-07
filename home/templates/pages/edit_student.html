@@ -1,0 +1,264 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}  {% endblock title %}
+
+{% block extrastyle %}
+
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.min.css' %}">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+
+{% endblock extrastyle %}
+
+{% block bodyclass %} hold-transition sidebar-mini layout-fixed {% endblock bodyclass %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Editar Estudiante <strong>{{ student.identificacion }}</strong></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item ">Estudiantes</li>
+              <li class="breadcrumb-item ">Editar Estudiante</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+               
+                    
+                    <div class="card card-primary">
+                        <div class="card-header">
+                          <h3 class="card-title">Informacion Estudiante ITM</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form>
+                          <div class="card-body">
+                            <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Identificación:</label>
+                              <input type="text" disabled class="form-control"  value="{{ student.identificacion}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Nombres:</label>
+                                <input type="text" class="form-control" value="{{ student.nombres}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="">Apellidos:</label>
+                                <input type="text" class="form-control" value="{{ student.apellidos }}">
+                              </div>
+
+                              <div class="row">
+                              <div class="form-group col-md-6">
+                                <label for="">Genero:</label>
+                                <input type="text" class="form-control" value="{{ student.genero }}">
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label for="">Fecha Nacimiento:</label>
+                                <input type="text" class="form-control" value="{{ student.fecha_nacimiento }}">
+                              </div>
+                            
+                            
+
+                              <div class="form-group col-md-6">
+                                <label for="">Correo Electronico:</label>
+                                <input type="text" class="form-control" value="{{ student.correo_electronico }}">
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label for="">Telefono:</label>
+                                <input type="text" class="form-control" value="{{ student.telefono }}">
+                              </div>
+
+                            </div>
+
+                              <div class="form-group">
+                                <label for="">Barrio:</label>
+                                <input type="text" class="form-control" value="{{ student.barrio }}">
+                              </div>
+
+                              
+
+                              <div class="form-group">
+                                <label for="">Direccion:</label>
+                                <input type="text" class="form-control" value="{{ student.direccion }}">
+                              </div>
+
+                              <div class="row">
+                              <div class="form-group col-md-6">
+                                <label for="">Comuna:</label>
+                                <input type="text" class="form-control" value="{{ student.comuna }}">
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label for="">Estrato:</label>
+                                <input type="text" class="form-control" value="{{ student.estrato }}">
+                              </div>
+
+                            </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Carrera:</label>
+                                    <input type="text" class="form-control" value="{{ student.carrera }}">
+                                  </div>
+                            
+                                <div class="form-group">
+                                    <label for="">Facultad:</label>
+                                    <input type="text" class="form-control" value="{{ student.facultad }}">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="">Promedio Aprobados:</label>
+                                    <input type="text" class="form-control" value="{{ student.promedio_acumulado }}">
+                                  </div>
+                            
+                                <div class="form-group">
+                                    <label for="">Creditos Aprobados:</label>
+                                    <input type="text" class="form-control" value="{{ student.creditos_aprobados }}">
+                                  </div>
+                            </div>
+                        </div>
+
+                          </div>
+                          <!-- /.card-body -->
+          
+                          <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                          </div>
+                        </form>
+                      </div>
+                      
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <style>
+    #map { height: 480px; }
+  </style>
+  {% endblock content %}
+
+  {% block extra_scripts %}
+  
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+    <script>
+
+        var mapOptions = {
+            center: [6.230833, -75.590553],
+            zoom: 10
+         }
+
+        var map = new L.map('map', mapOptions);
+        //const map = L.map('map').setView([6.230833, -75.590553], 13);
+    
+        /*const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);*/
+
+          // add tile layer
+        var tileLayer = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWV0YWJvbGlzbW9mY2l0aWVzIiwiYSI6ImNqcHA5YXh6aTAxcmY0Mm8yMGF3MGZjdGcifQ.lVZaiSy76Om31uXLP3hw-Q", {
+          attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+          // this "layer" option must be kept, as it prevents the tiles from disappearing when removing all other layers from the map
+          layer: "tiles",
+        })
+
+        tileLayer.addTo(map);
+
+    
+            //const marker = L.marker([51.5, -0.09]).addTo(map)
+            //.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+            {% for student in students %}
+            L.marker([{{ student.dir_latitude }}, {{ student.dir_longitude }}]).addTo(map)
+            .bindPopup('<b>{{ student.nombres }}</b><br />{{ student.apellidos }}'
+                +'</b><br />{{ student.correo_electronico }}'
+                +'</b><br />Carrera:{{ student.carrera }} - {{ student.facultad }}'
+                +'</b><br />Credito Aprobados:{{ student.creditos_aprobados }}'
+                +'</b><br />Telefono:{{ student.telefono }}'
+                +'</b><br />Direccion:{{ student.direccion }}'
+                +'</b><br />Estrato:{{ student.estrato }}'
+            ).openPopup();
+            {% endfor %}
+    
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent(`You clicked the map at ${e.latlng.toString()}`)
+                .openOn(map);
+        }
+
+
+        function getColor(d) {
+            return d > 1000 ? '#800026' :
+                  d > 500  ? '#BD0026' :
+                  d > 200  ? '#E31A1C' :
+                  d > 100  ? '#FC4E2A' :
+                  d > 50   ? '#FD8D3C' :
+                  d > 20   ? '#FEB24C' :
+                  d > 10   ? '#FED976' :
+                              '#FFEDA0';
+        }
+
+        function style(feature) {
+            return {
+                fillColor: getColor(feature.properties.density),
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+        var geojsonLayer = new L.GeoJSON.AJAX("/static/comunas_corregimientos_med.geojson");       
+        geojsonLayer.addTo(map);
+        map.on('click', onMapClick);
+    
+    </script>
+  {% endblock extra_scripts %}
+

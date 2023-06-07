@@ -1,0 +1,8 @@
+django
+gunicorn
+python-dotenv
+whitenoise
+django-admin-adminlte==1.0.5
+mysqlclient
+django-adminlte3==0.1.6
+googlemaps==4.10.0
