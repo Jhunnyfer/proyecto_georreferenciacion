@@ -1,3 +1,4 @@
+import os
 import uuid
 import datetime
 import csv
@@ -74,7 +75,7 @@ def handle_uploaded_file(f):
 
 
 def process_file_upload(nf):
-    gmaps = googlemaps.Client(key='AIzaSyAuH3N_NLbFbMgcDoKIKaHyd4ZXHKmf8mg')
+    gmaps = googlemaps.Client(key=os.getenv('SECRET_KEY_GOOGLE'     , None))
     with open("static/uploads/" + nf, 'r') as file:
         csvreader = csv.DictReader(file, delimiter=";")
         for row in csvreader:
