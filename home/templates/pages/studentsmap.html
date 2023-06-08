@@ -56,6 +56,27 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
+                    <form method="post" action="">
+                    <div class="row">
+                      
+                        {% csrf_token %}
+                      <div class="col-3">
+                        <label>Filter promedio acumulario:</label>
+                      <input type="number" name="min" placeholder="Nota minima"  onchange="setTwoNumberDecimal" min="0" max="5" step="0.1" class="form-control">
+                      </div>
+                      <div class="col-4">
+                        <label>&nbsp;</label>
+                      <input type="number" name="max" placeholder="Nota maxima" onchange="setTwoNumberDecimal" min="0" max="5" step="0.1" class="form-control">
+                      </div>
+                      <div class="col-5">
+                        <label>&nbsp;</label>
+                        <button type="submit" class="btn btn-block btn-dark">Filtar</button>
+                      </div>
+                      
+                      </div>
+                    </form>
+                      <br/>
+                      <label for="">Total Estudiante:</label>{{students.count}}
                     <div id="map"></div>
                   </div>
                   <!-- /.card-body -->
@@ -87,6 +108,10 @@
       img.huechange { filter: hue-rotate(120deg); }
       </style>
     <script>
+
+      function setTwoNumberDecimal(event) {
+          this.value = parseFloat(this.value).toFixed(2);
+      }
 
       var greenIcon = L.icon({
           iconUrl: 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|008000&chf=a,s,ee00FFFF',

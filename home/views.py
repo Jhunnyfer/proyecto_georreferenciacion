@@ -43,7 +43,13 @@ def listStudents(request):
 
 def listStudentsMap(request):
     if validate_is_authenticated(request) == True:
-        students = Estudiantes.objects.all()
+        #
+        students = None
+        if request.method == 'POST':
+            students = Estudiantes.objects.filter(promedio_acumulado__range=(request.POST.get('min'), request.POST.get('max')))
+        else:
+            students = Estudiantes.objects.all()
+        
         return render(request, "pages/studentsMap.html", {"students": students})
     else:
         return redirect("/accounts/login/")
@@ -59,8 +65,17 @@ def viewStudent(request, id):
 
 def editStudent(request, id):
     if validate_is_authenticated(request) == True:
-        student = Estudiantes.objects.get(id=id)
-        return render(request, "pages/edit_student.html", {"student": student})
+        if request.method == 'POST':
+            '''form = UploadFileForm(request.POST, request.FILES)
+            if form.is_valid():
+                process_file_upload(handle_uploaded_file(request.FILES['file']))
+                response = redirect("/studentsupload")
+                response.set_cookie('correct', 'correct',10)
+                return response'''
+            print("Welcome")
+        else:
+            student = Estudiantes.objects.get(id=id)
+            return render(request, "pages/edit_student.html", {"student": student})
     else:
         return redirect("/accounts/login/")
 
