@@ -83,7 +83,7 @@ def editStudent(request, id):
 def handle_uploaded_file(f):
     now = datetime.datetime.now()
     nameFile = str(uuid.uuid1())[:8] + "_" + str(now.strftime("%Y%m%d%H%M%S")) + '.csv'
-    with open('static/uploads/' + nameFile , 'wb+', encoding='utf-8') as destination:
+    with open('static/uploads/' + nameFile , 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
     return nameFile
@@ -91,7 +91,7 @@ def handle_uploaded_file(f):
 
 def process_file_upload(nf):
     gmaps = googlemaps.Client(key=os.getenv('SECRET_KEY_GOOGLE'     , None))
-    with open("static/uploads/" + nf, 'r') as file:
+    with open('static/uploads/' + nf, 'r', encoding='utf8') as file:
         csvreader = csv.DictReader(file, delimiter=";")
         for row in csvreader:
             result = json.dumps(gmaps.geocode(str(row['direccion'] +', Medellin, Colombia')))
