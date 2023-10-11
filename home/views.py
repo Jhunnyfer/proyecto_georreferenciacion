@@ -83,7 +83,7 @@ def editStudent(request, id):
 def handle_uploaded_file(f):
     now = datetime.datetime.now()
     nameFile = str(uuid.uuid1())[:8] + "_" + str(now.strftime("%Y%m%d%H%M%S")) + '.csv'
-    with open('static/uploads/' + nameFile , 'wb+') as destination:
+    with open('static/uploads/' + nameFile , 'wb+', encoding='utf-8') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
     return nameFile
