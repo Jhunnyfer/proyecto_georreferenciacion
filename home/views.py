@@ -50,7 +50,7 @@ def listStudentsMap(request):
         else:
             students = Estudiantes.objects.all()
         
-        return render(request, "pages/studentsMap.html", {"students": students})
+        return render(request, "pages/studentsmap.html", {"students": students})
     else:
         return redirect("/accounts/login/")
 
