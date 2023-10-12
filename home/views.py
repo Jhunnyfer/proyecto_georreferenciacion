@@ -49,6 +49,15 @@ def listStudentsMap(request):
             students = Estudiantes.objects.filter(promedio_acumulado__range=(request.POST.get('min'), request.POST.get('max')))
         else:
             students = Estudiantes.objects.all()
+            page = request.GET.get('page', 1)
+            paginator = Paginator(students, 300)
+            try:
+                students = paginator.page(page)
+            except PageNotAnInteger:
+                students = paginator.page(1)
+            except EmptyPage:
+                students = paginator.page(paginator.num_pages)
+            
         
         return render(request, "pages/studentsmap.html", {"students": students})
     else:
