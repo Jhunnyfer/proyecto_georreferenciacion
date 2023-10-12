@@ -108,6 +108,9 @@ if DB_ENGINE and DB_NAME and DB_USERNAME:
         'PASSWORD': DB_PASS,
         'HOST'    : DB_HOST,
         'PORT'    : DB_PORT,
+        'OPTIONS': {
+            'charset': 'utf8mb4'  # This is the important line
+        }
         }, 
     }
 else:
